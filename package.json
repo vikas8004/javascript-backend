@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "backend using js only",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon src/index.js"
   },
   "keywords": [
     "javascript",
@@ -12,5 +13,8 @@
     "mongoose"
   ],
   "author": "vikas kumar",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
 }
