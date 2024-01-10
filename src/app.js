@@ -22,7 +22,8 @@ app.use(
 app.use(express.static("public"));
 
 app.use(cookieParser());
+//cookies are accessed two way u can set cookies and get too.
 
 // routers
-app.use("/api/v1/users",userRouter)
+app.use("/api/v1/users", userRouter);
 export { app };

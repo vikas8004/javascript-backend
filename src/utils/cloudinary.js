@@ -13,6 +13,7 @@ const uploadOnCloudinary = async function (filepath) {
       resource_type: "auto",
     });
     console.log(res.url);
+    fs.unlinkSync(filepath)
     return res;
   } catch (error) {
     fs.unlinkSync(filepath); //this is used to clean the temporary file stored on the server if there is a case when the file uploading has been failed but stored on the sever during this process .

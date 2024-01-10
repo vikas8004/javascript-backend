@@ -58,8 +58,8 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.isCorrectPassword = async function (pass) {
   return await bcryptjs.compare(pass, this.password);
 };
-userSchema.methods.generateAcessToken = function () {
-  return jsonwebtoken.sign(
+userSchema.methods.generateAccessToken = function () {
+  const token = jsonwebtoken.sign(
     {
       _id: this._id,
       email: this.email,
@@ -67,19 +67,23 @@ userSchema.methods.generateAcessToken = function () {
       fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
-    { expiresIn: ACCESS_TOKEN_EXPIRY }
+    { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
   );
+  // console.log(token);
+  return token;
 };
 
 userSchema.methods.generateRefreshToken = function () {
   // refresh token's expiry is more than the access token and we send less data with refresh toekn.
-  return jsonwebtoken.sign(
+  const token = jsonwebtoken.sign(
     {
       _id: this._id,
     },
     process.env.REFRESH_TOKEN_SECRET,
-    { expiresIn: REFRESH_TOKEN_EXPIRY }
+    { expiresIn: process.env.REFRESH_TOKEN_EXPIRY }
   );
+  // console.log(token);
+  return token;
 };
 
 const User = model("User", userSchema);
