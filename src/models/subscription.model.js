@@ -1,6 +1,6 @@
-import mongoose, { Schema, Schmea, model } from "mongoose";
+import mongoose, { Schema, model } from "mongoose";
 
-const subscriptionSchema = new Schmea(
+const subscriptionSchema = new Schema(
   {
     subscriber: {
       type: Schema.Types.ObjectId,
