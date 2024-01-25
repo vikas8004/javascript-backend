@@ -26,4 +26,8 @@ app.use(cookieParser());
 
 // routers
 app.use("/api/v1/users", userRouter);
+app.use("/",(req,res)=>{
+  res.send("hello buddy");
+}
+  )
 export { app };
